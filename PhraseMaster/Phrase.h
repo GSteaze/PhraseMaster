@@ -1,7 +1,8 @@
 #pragma once
-#include "Word.h"
-class Phrase :
-	public Word
+
+using namespace std;
+
+class Phrase
 {
 public:
 	Phrase();
