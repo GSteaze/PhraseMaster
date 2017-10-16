@@ -12,7 +12,7 @@ private:
 
 	Phrase _userPhrase;
 
-	int ValidateSelection(int userInput);
+	int ValidateSelection();
 	void WelcomeMessage();
 	void DisplayMenu();
 	void MenuSelection();

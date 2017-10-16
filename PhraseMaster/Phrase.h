@@ -23,7 +23,7 @@ public:
 	Phrase();
 	~Phrase();
 
-	void ParseUserInput();
+	//void ParseUserInput();
 	string GetPhrase();
 	void SetUserPhrase();
 	void CreateWords();

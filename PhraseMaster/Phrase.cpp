@@ -147,15 +147,21 @@ void Phrase::SetUserPhrase()
 	_userPhrase = userInput;
 }
 
-/*string Phrase::ReorderPhrase() {
+string Phrase::ReorderPhrase() {
 	string reorderedPhrase = "";
-	string reorderedPhrase[1000];
-	for (int index = 0; index < _numberOfWords; index++) {
-		Word tempWord = Word();
-		tempWord.SetWord(_wordsInPhrase[index]);
-		int numberInAlphabet = tempWord.GetNumberInAlphabet();
+	for (int alphabetIndex = 0; alphabetIndex <= 26; alphabetIndex++) {
+		for (int index = 0; index < _numberOfWords; index++) {
+			Word tempWord = Word();
+			tempWord.SetWord(_wordsInPhrase[index]);
+			int numberInAlphabet = tempWord.GetNumberInAlphabet();
+			if (numberInAlphabet == alphabetIndex) {
+				reorderedPhrase.append(_wordsInPhrase[index]);
+				reorderedPhrase.append(" ");
+			}
+		}
 	}
-}*/
+	return reorderedPhrase;
+}
 
 string Phrase::ReversePhrase() {
 	string reversedPhrase = "";

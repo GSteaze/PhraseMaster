@@ -29,7 +29,7 @@ void MenuIO::WelcomeMessage() {
 }
 
 void MenuIO::DisplayMenu() {
-	cout << "Menu Options" << endl
+	cout << endl << "Menu Options" << endl
 		<< "1. New Phrase" << endl
 		<< "2. Reverse Words" << endl
 		<< "3. Sort Words" << endl
@@ -44,9 +44,9 @@ void MenuIO::MenuSelection() {
 
 	while (isRunAgain) {
 		DisplayMenu();
-		cout << "Enter 1 - 6 to select option" << endl
-			<< "Selection : ";
-		cin >> userSelection;
+		
+		userSelection = ValidateSelection();
+		cout << endl;
 
 		switch (userSelection) {
 		case 1: _userPhrase.SetUserPhrase();
@@ -54,7 +54,7 @@ void MenuIO::MenuSelection() {
 			break;
 		case 2: cout << "Reversed Phrase : " << _userPhrase.ReversePhrase() << endl;
 			break;
-		case 3: //cout << "Reordered Phrase : " << _userPhrase.ReorderPhrase() << endl;
+		case 3: cout << "Reordered Phrase : " << _userPhrase.ReorderPhrase() << endl;
 			break;
 		case 4: cout << "Rot13 : " << _userPhrase.Rot13Phrase() << endl;
 			break;
@@ -62,15 +62,22 @@ void MenuIO::MenuSelection() {
 			break;
 		case 6: isRunAgain = false;
 			break;
+		default: cout << "Invalid Selection. Please try again." << endl;
 		}
 	}
 }
 
-int MenuIO::ValidateSelection(int userInput) {
+int MenuIO::ValidateSelection() {
+	int userInput = 0;
+
 	bool isValid = false;
 	
+	cout << "Enter 1 - 6 to select option" << endl
+		<< "Selection : ";
+	cin >> userInput;
+
 	while (!isValid) {
-		while (cin.fail()) {
+		if (cin.fail()) {
 			cin.clear();
 			cin.ignore(kEndOfLine, '\n');
 			cout << "Please try again: ";
@@ -82,6 +89,9 @@ int MenuIO::ValidateSelection(int userInput) {
 			cin.ignore(kEndOfLine, '\n');
 			cout << "Please try again: ";
 			cin >> userInput;
+		}
+		else if (userInput >= 1 && userInput <= 6) {
+			isValid = true;
 		}
 	}
 	return userInput;
