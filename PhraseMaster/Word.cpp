@@ -167,4 +167,8 @@ void Word::NumberInAlphabet() {
 	_numberInAlphabet = numberInAlphabet;
 }
 
+void Word::TestCode() {
+
+}
+
 

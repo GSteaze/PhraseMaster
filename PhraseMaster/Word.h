@@ -32,6 +32,8 @@ public:
 	string GetRot13Word();
 	int GetNumberInAlphabet();
 
+	void TestCode();
+
 	~Word();
 
 	

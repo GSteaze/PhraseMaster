@@ -30,5 +30,9 @@ public:
 	string ReorderPhrase();
 	string ReversePhrase();
 	string Rot13Phrase();
+	string LowerCasePhrase();
+
+	void TestCode();
+	void FillFakeString();
 };
 

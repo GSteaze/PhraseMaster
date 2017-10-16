@@ -2,15 +2,24 @@
 #include <string>
 #include "Word.h"
 #include "Phrase.h"
+#include "MenuIO.h"
 
 using namespace std;
 
 void TestCode() {
+	//Phrase Test
 	Phrase firstPhrase = Phrase();
-	cout << firstPhrase.GetPhrase() << endl;
+	cout << "Initial Phrase: " << firstPhrase.GetPhrase() << endl;
 	firstPhrase.CreateWords();
-	firstPhrase.ParseUserInput();
+	//firstPhrase.ParseUserInput();
+	//cout << "Parsed phrase: " << firstPhrase.GetPhrase() << endl;
+	//firstPhrase.FillFakeString();
+	cout << "Reversed phrase: " << firstPhrase.ReversePhrase() << endl;
+	cout << "Rot13: " << firstPhrase.Rot13Phrase() << endl;
+	cout << "Lowercase : " << firstPhrase.LowerCasePhrase() << endl;
 	cout << "Moving On." << endl;
+
+	//Word Test
 	/*Word firstWord = Word();
 	firstWord.SetWord();
 	cout << firstWord.GetWord() << endl;
@@ -19,13 +28,18 @@ void TestCode() {
 	cout << firstWord.GetRot13Word() << endl;
 	cout << firstWord.GetNumberInAlphabet() << endl;*/
 
-	string word = "";
-	cin >> word;
+	system("pause");
 
 }
 
 int main() {
 	TestCode();
+	//Phrase firstPhrase = Phrase();
+	////firstPhrase.ParseUserInput();
+	//firstPhrase.FillFakeString();
+	//cout << firstPhrase.GetPhrase() << endl;
+	//cout << firstPhrase.ReversePhrase() << endl;
+	//cout << firstPhrase.Rot13Phrase() << endl;
 
 
 	return 0;

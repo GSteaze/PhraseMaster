@@ -111,11 +111,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MenuIO.cpp" />
     <ClCompile Include="Phrase.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Word.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MenuIO.h" />
     <ClInclude Include="Phrase.h" />
     <ClInclude Include="Word.h" />
   </ItemGroup>
