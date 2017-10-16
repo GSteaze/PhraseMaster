@@ -6,8 +6,6 @@
 
 using namespace std;
 
-const int kEndOfLine = 1024;
-
 class MenuIO
 {
 private:
@@ -15,15 +13,17 @@ private:
 	Phrase _userPhrase;
 
 	int ValidateSelection(int userInput);
+	void WelcomeMessage();
+	void DisplayMenu();
+	void MenuSelection();
 
 
 public:
 	MenuIO();
 	~MenuIO();
 
-	void WelcomeMessage();
-	void DisplayMenu();
-	void MenuSelection();
+	void RunMenu();
+	
 
 
 };

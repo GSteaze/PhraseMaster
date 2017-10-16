@@ -9,6 +9,7 @@ Word::Word()
 	_lowerCaseWord = "";
 	_reverseWord = "";
 	_rot13Word = "";
+	_pigLatin = "";
 	_numberInAlphabet = 0;
 }
 
@@ -62,6 +63,11 @@ string Word::GetRot13Word() {
 int Word::GetNumberInAlphabet() {
 	NumberInAlphabet();
 	return _numberInAlphabet;
+}
+
+string Word::GetPigLatin() {
+	PigLatin();
+	return _pigLatin;
 }
 
 void Word::ToLowercase() {
@@ -167,8 +173,78 @@ void Word::NumberInAlphabet() {
 	_numberInAlphabet = numberInAlphabet;
 }
 
-void Word::TestCode() {
-
+void Word::PigLatin() {
+	string pigLatinWord = "";
+	string temp = "";
+	if (IsConsonant(_word[0])) {
+		temp = _word.substr(1);
+		pigLatinWord.append(temp);
+		pigLatinWord.push_back(_word[0]);
+		pigLatinWord.append("ay");
+	}
+	else if (IsVowel(_word[0])) {
+		pigLatinWord = _word;
+		pigLatinWord.append("ay");
+	}
+	else if (IsConsonant(_word[0]) && IsConsonant(_word[1])) {
+		if (IsConsonant(_word[3])) {
+			temp = _word.substr(3);
+			pigLatinWord.append(temp);
+			temp = _word.substr(0, 3);
+			pigLatinWord.append(temp);
+			pigLatinWord.append("ay");
+		}
+		else {
+			temp = _word.substr(2);
+			pigLatinWord.append(temp);
+			temp = _word.substr(0, 2);
+			pigLatinWord.append(temp);
+			pigLatinWord.append("ay");
+		}
+	}
+	_pigLatin = pigLatinWord;
 }
+
+bool Word::IsVowel(char letter) {
+	if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' ||
+		letter == 'A' || letter == 'E' || letter == 'I' || letter == 'O' || letter == 'U') {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool Word::IsConsonant(char letter) {
+	if (!IsVowel(letter) && !IsDigit(letter) && !IsPunctuation(letter)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool Word::IsDigit(char letter) {
+	if (letter > '0' && letter < '9') {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool Word::IsPunctuation(char letter) {
+	if ((letter > ' ') && (letter < '0')) {
+		return true;
+	}
+	else if ((letter > '9') && (letter < 'A')) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+void Word::TestCode() {}
 
 

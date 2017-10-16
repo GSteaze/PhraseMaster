@@ -12,14 +12,20 @@ private:
 	string _reverseWord;
 	string _rot13Word;
 	int _numberInAlphabet;
+	string _pigLatin;
 
 	void ToLowercase();
-
 	void ReverseWord();
-
 	void Rot13();
-
 	void NumberInAlphabet();
+
+	void PigLatin();
+	bool IsVowel(char letter);
+	bool IsConsonant(char letter);
+	bool IsDigit(char letter);
+	bool IsPunctuation(char letter);
+
+
 
 public:
 	Word();
@@ -31,6 +37,7 @@ public:
 	string GetReverseWord();
 	string GetRot13Word();
 	int GetNumberInAlphabet();
+	string GetPigLatin();
 
 	void TestCode();
 

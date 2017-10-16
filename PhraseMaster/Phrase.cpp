@@ -20,7 +20,7 @@ Phrase::Phrase()
 
 Phrase::~Phrase()
 {
-	delete[] iWords;
+	//delete[] iWords;
 }
 
 string Phrase::GetPhrase() {
@@ -129,6 +129,7 @@ void Phrase::SetUserPhrase()
 	string userInput = "";
 	cout << "Enter the phrase to be manipulated." << endl
 		<< "Phrase : ";
+	cin.ignore(kEndOfLine, '\n');
 	getline(cin, userInput);
 
 	bool isValid = false;
@@ -146,13 +147,15 @@ void Phrase::SetUserPhrase()
 	_userPhrase = userInput;
 }
 
-string Phrase::ReorderPhrase() {
+/*string Phrase::ReorderPhrase() {
 	string reorderedPhrase = "";
-	int arraySize = numberOfWords;
-	for (int index = 0; index < numberOfWords; index++) {
-
+	string reorderedPhrase[1000];
+	for (int index = 0; index < _numberOfWords; index++) {
+		Word tempWord = Word();
+		tempWord.SetWord(_wordsInPhrase[index]);
+		int numberInAlphabet = tempWord.GetNumberInAlphabet();
 	}
-}
+}*/
 
 string Phrase::ReversePhrase() {
 	string reversedPhrase = "";
@@ -196,6 +199,20 @@ string Phrase::LowerCasePhrase() {
 		lowerCasePhrase.append(" ");
 	}
 	return lowerCasePhrase;
+}
+
+string Phrase::PigLatin() {
+	string pigLatinWord = "";
+	string pigLatinPhrase = "";
+
+	for (int index = 0; index < _numberOfWords; index++) {
+		Word tempWord = Word();
+		tempWord.SetWord(_wordsInPhrase[index]);
+		pigLatinWord = tempWord.GetPigLatin();
+		pigLatinPhrase.append(pigLatinWord);
+		pigLatinPhrase.append(" ");
+	}
+	return pigLatinPhrase;
 }
 
 void Phrase::TestCode() {

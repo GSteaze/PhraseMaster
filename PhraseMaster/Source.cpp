@@ -33,14 +33,9 @@ void TestCode() {
 }
 
 int main() {
-	TestCode();
-	//Phrase firstPhrase = Phrase();
-	////firstPhrase.ParseUserInput();
-	//firstPhrase.FillFakeString();
-	//cout << firstPhrase.GetPhrase() << endl;
-	//cout << firstPhrase.ReversePhrase() << endl;
-	//cout << firstPhrase.Rot13Phrase() << endl;
-
+	
+	MenuIO firstMenu = MenuIO();
+	firstMenu.RunMenu();
 
 	return 0;
 }

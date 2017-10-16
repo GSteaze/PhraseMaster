@@ -31,6 +31,7 @@ public:
 	string ReversePhrase();
 	string Rot13Phrase();
 	string LowerCasePhrase();
+	string PigLatin();
 
 	void TestCode();
 	void FillFakeString();
