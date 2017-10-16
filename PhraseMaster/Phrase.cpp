@@ -14,6 +14,8 @@ Phrase::Phrase()
 	_numberOfWords = 0;
 	Word *iWords = nullptr;
 	iWords = new Word[1000];
+
+	string _wordsInPhrase[1000];
 }
 
 
@@ -25,6 +27,20 @@ Phrase::~Phrase()
 string Phrase::GetPhrase() {
 	return _userPhrase;
 }
+
+void Phrase::ParseUserInput() {
+	string tempPhrase = _userPhrase;
+	int position = 0;
+	string word = "";
+	int wordCounter = 0;
+	while ((position = tempPhrase.find(' ')) != string::npos) {
+		word = tempPhrase.substr(0, position);
+		_wordsInPhrase[wordCounter] = word;
+		tempPhrase.erase(0, position);
+	}
+	cout << _wordsInPhrase[1] << endl;
+}
+
 
 void Phrase::CreateWords() {
 	string tempWord = _userPhrase;
@@ -41,10 +57,13 @@ void Phrase::CreateWords() {
 
 		iWords[wordCounter] = new Word();
 		iWords[wordCounter]->SetWord(wordFromPhrase);
+		_wordsInPhrase[wordCounter] = wordFromPhrase;
 		wordCounter++;
 		lastLocator = locator;
 	}
 	_numberOfWords = wordCounter;
+
+	cout << _wordsInPhrase[2] << endl;
 }
 
 void Phrase::SetUserPhrase()
@@ -79,7 +98,7 @@ void Phrase::SetUserPhrase()
 //
 //string Phrase::ReversePhrase() {
 //	string reversedPhrase = "";
-//	for (int index = numberOfWords; index >= 0; index--) {
+//	for (int index = _numberOfWords; index >= 0; index--) {
 //		reversedPhrase.append(iWords[index]->GetWord);
 //		reversedPhrase.append(" ");
 //	}

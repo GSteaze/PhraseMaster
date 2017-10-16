@@ -9,7 +9,8 @@ void TestCode() {
 	Phrase firstPhrase = Phrase();
 	cout << firstPhrase.GetPhrase() << endl;
 	firstPhrase.CreateWords();
-
+	firstPhrase.ParseUserInput();
+	cout << "Moving On." << endl;
 	/*Word firstWord = Word();
 	firstWord.SetWord();
 	cout << firstWord.GetWord() << endl;
