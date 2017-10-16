@@ -7,23 +7,33 @@ class Word
 {
 private:
 
-	string word;
-	string lowerCaseWord;
-	string reverseWord;
-	string rot13Word;
-	int numberInAlphabet;
+	string _word;
+	string _lowerCaseWord;
+	string _reverseWord;
+	string _rot13Word;
+	int _numberInAlphabet;
+
+	void ToLowercase();
+
+	void ReverseWord();
+
+	void Rot13();
+
+	void NumberInAlphabet();
 
 public:
 	Word();
 
+	void SetWord(string word);
+	void SetWord();
+	string GetWord();
+	string GetLowerCaseWord();
+	string GetReverseWord();
+	string GetRot13Word();
+	int GetNumberInAlphabet();
+
 	~Word();
 
-	void ToLowercase(string word);
 	
-	void ReverseWord(string word);
-
-	void Rot13(string word);
-
-	void NumberInAlphabet(string word);
 };
 

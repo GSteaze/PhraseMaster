@@ -1,62 +1,114 @@
 #include "Word.h"
+#include <iostream>
 
 using namespace std;
 
 Word::Word()
 {
-	word = "";
-	lowerCaseWord = "";
-	reverseWord = "";
-	rot13Word = "";
-	numberInAlphabet = 0;
+	_word = "";
+	_lowerCaseWord = "";
+	_reverseWord = "";
+	_rot13Word = "";
+	_numberInAlphabet = 0;
 }
-
 
 Word::~Word()
 {
 }
 
-void Word::ToLowercase(string word) {
-	for (int index = 0; index < word.size(); index++) {
-	if (word[index] >= 'A' && word[index] <= 'Z') {
-		word[index] = word[index] + 32;
-	}
-	}
-	this->lowerCaseWord = word;
+void Word::SetWord(string word) {
+	_word = word;
 }
 
-void Word::ReverseWord(string word) {
-	string reverseWord = word;
+void Word::SetWord() {
+	string userInput = "";
+	cout << "Enter the word." << endl
+		<< "Word : ";
+	cin >> userInput;
+
+	bool isValid = false;
+	while (!isValid) {
+		if (userInput.empty()) {
+			cout << "Word cannot be empty." << endl
+				<< "Please try again : ";
+			cin >> userInput;
+		}
+		else {
+			isValid = true;
+		}
+	}
+	_word = userInput;
+}
+
+string Word::GetWord() {
+	return _word;
+}
+
+string Word::GetLowerCaseWord() {
+	ToLowercase();
+	return _lowerCaseWord;
+}
+
+string Word::GetReverseWord() {
+	ReverseWord();
+	return _reverseWord;
+}
+
+string Word::GetRot13Word() {
+	Rot13();
+	return _rot13Word;
+}
+
+int Word::GetNumberInAlphabet() {
+	NumberInAlphabet();
+	return _numberInAlphabet;
+}
+
+void Word::ToLowercase() {
+	string lowerCaseWord = _word;
+	for (int index = 0; index < lowerCaseWord.size(); index++) {
+	if (lowerCaseWord[index] >= 'A' && lowerCaseWord[index] <= 'Z') {
+		lowerCaseWord[index] = lowerCaseWord[index] + 32;
+	}
+	}
+	_lowerCaseWord = lowerCaseWord;
+}
+
+void Word::ReverseWord() {
+	string reverseWord = _word;
 	int reverseWordIndex = 0;
-	for (int index = word.size() - 1; index < word.size(); index--) {
-		reverseWord[reverseWordIndex] = word[index];
+	for (int index = reverseWord.size() - 1; index < reverseWord.size(); index--) {
+		reverseWord[reverseWordIndex] = _word[index];
+		reverseWordIndex++;
 	}
-	this->reverseWord = reverseWord;
+	_reverseWord = reverseWord;
 }
 
-void Word::Rot13(string word) {
-	for (int index = 0; index < word.size(); index++) {
-		if (word[index] >= 'a' && word[index] <= 'z') {
-			word[index] = word[index] + 13;
-			if (word[index] > 'z') {
-				word[index] = word[index] - 26;
+void Word::Rot13() {
+	string rot13Word = _word;
+	for (int index = 0; index < _word.size(); index++) {
+		if (rot13Word[index] >= 'a' && rot13Word[index] <= 'z') {
+			rot13Word[index] = rot13Word[index] + 13;
+			if (rot13Word[index] > 'z') {
+				rot13Word[index] = rot13Word[index] - 26;
 			}
 		}
-		else if (word[index] >= 'A' && word[index] <= 'Z') {
-			word[index] = word[index] + 13;
-			if (word[index] > 'Z') {
-				word[index] = word[index] - 26;
+		else if (rot13Word[index] >= 'A' && rot13Word[index] <= 'Z') {
+			rot13Word[index] = rot13Word[index] + 13;
+			if (rot13Word[index] > 'Z') {
+				rot13Word[index] = rot13Word[index] - 26;
 			}
 		}
 		else {
-			word[index] = '*';
+			rot13Word[index] = '*';
 		}
 	}
-	this->rot13Word = word;
+	_rot13Word = rot13Word;
 }
 
-void Word::NumberInAlphabet(string word) {
-	char firstLetter = word[0];
+void Word::NumberInAlphabet() {
+	string tempWord = GetLowerCaseWord();
+	char firstLetter = tempWord[0];
 	int numberInAlphabet = 0;
 	switch (firstLetter) {
 	case 'a':  numberInAlphabet = 1;
@@ -112,7 +164,7 @@ void Word::NumberInAlphabet(string word) {
 	case 'z':  numberInAlphabet = 26;
 		break;
 	}
-	this->numberInAlphabet = numberInAlphabet;
+	_numberInAlphabet = numberInAlphabet;
 }
 
 
